@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.compose)
+    id("com.google.devtools.ksp") version "1.9.10-1.0.13"
 }
 
 android {
@@ -40,6 +41,12 @@ android {
 }
 
 dependencies {
+    val room_version = "2.6.1"
+    implementation("androidx.room:room-runtime:$room_version")
+    implementation("com.google.dagger:hilt-android:2.57.1")
+    ksp("com.google.dagger:hilt-android-compiler:2.57.1")
+
+    implementation("androidx.room:room-ktx:$room_version")
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
